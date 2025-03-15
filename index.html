@@ -60,28 +60,71 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">✂️</div>
-                    <h3>Corte Moderno</h3>
-                    <p>Cortes atualizados com as tendências do momento.</p>
-                    <span class="price">R$ 35,00</span>
+                    <h3>Corte Social</h3>
+                    <span class="price">R$ 20,00</span>
+                    <h3>Corte Degrade</h3>
+                    <span class="price">R$ 25,00</span>
+                    <h3>Sobranselha</h3>
+                    <span class="price">R$ 5,00</span>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🪒</div>
-                    <h3>Barba Completa</h3>
-                    <p>Modelagem e tratamento completo para sua barba.</p>
-                    <span class="price">R$ 25,00</span>
+                    <div class="service-icon">💈✂️</div>
+                    <h3>Cuidados Especias</h3>
+                    <p>Selagem</p>
+                    <span class="price">R$ 70,00</span>
+                    <p>Corte Simples</p>
+                    <span class="price">R$ 15,00</span>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">💈</div>
-                    <h3>Combo Corte + Barba</h3>
-                    <p>Pacote completo para renovar seu visual.</p>
-                    <span class="price">R$ 55,00</span>
+                    <h3>Tratamento especial</h3>
+                    <h3>Limpeza de Pele com mascara de agila</h3>
+                    <span class="price">R$ 15,00</span>
+                    <h3>Botox</h3>
+                    <span class="price">R$ 65,00</span>
+
+
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🧴</div>
-                    <h3>Tratamento Capilar</h3>
-                    <p>Hidratação e cuidados para cabelos danificados.</p>
-                    <span class="price">R$ 45,00</span>
+                    <div class="service-icon">💈</div>
+                    <h3>Hidratação</h3>
+                    <span class="price">R$ 10,00</span>
+                    <h3>Limpeza de Pela</h3>
+                    <span class="price">R$ 10,00</span>
+
                 </div>
+                <div class="service-card">
+                    <div class="service-icon">🪒✂️</div>
+                    <h3>Combo Corte + Barba Simples</h3>
+                    <p>Pacote completo para renovar seu visual.</p>
+                    <span class="price">R$ 30,00</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🪒✂️</div>
+                    <h3>Combo Corte + Sobraselha</h3>
+                    <p>Pacote completo para renovar seu visual.</p>
+                    <span class="price">R$ 30,00</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🪒✂️</div>
+                    <h3>Combo Broze : Corte</h3>
+                    <p>Pacote completo para renovar seu visual.</p>
+                    <span class="price">R$ 75,00</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🪒✂️</div>
+                    <h3>Combo Prata :
+                        Corte + Barba</h3>
+                    <p>Pacote completo para renovar seu visual.</p>
+                    <span class="price">R$ 140,00</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🪒✂️</div>
+                    <h3>Combo Outro: Corte + Barba e Sobranselha</h3>
+                    <p>Pacote completo para renovar seu visual.</p>
+                    <span class="price">R$ 150,00</span>
+                </div>
+
             </div>
         </section>
 
@@ -172,33 +215,37 @@
             </div>
         </section>
 
-        <!-- Formulário de Agendamento -->
+        <!-- Formulário de Agendamento Simplificado -->
         <section id="agendamento" class="schedule-section">
-            <h2 class="section-title">Agendar Horário</h2>
-            <div class="schedule-form">
-                <div class="form-group">
-                    <label for="name">Nome completo</label>
-                    <input type="text" id="name" placeholder="Seu Nome">
+            <div class="container">
+                <h2 class="section-title">Agendar Horário</h2>
+                <p class="section-subtitle">Preencha seus dados para agendar via WhatsApp</p>
+
+                <div class="schedule-form">
+                    <form id="appointment-form" onsubmit="redirectToWhatsApp(event)">
+                        <div class="form-group">
+                            <label for="name">Nome Completo*</label>
+                            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefone*</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="btn primary-btn">
+                                <span>Agendar via WhatsApp</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Telefone</label>
-                    <input type="tel" id="phone" placeholder="(00) 00000-0000">
-                </div>
-                <div class="form-group">
-                    <label for="service">Serviço</label>
-                    <select id="service">
-                        <option value="">Selecione um serviço</option>
-                        <option value="corte">Corte Moderno</option>
-                        <option value="barba">Barba Completa</option>
-                        <option value="combo">Combo Corte + Barba</option>
-                        <option value="tratamento">Tratamento Capilar</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="datetime">Data e Hora</label>
-                    <input type="datetime-local" id="datetime">
-                </div>
-                <button class="submit-btn" onclick="scheduleAppointment()">Agendar agora</button>
             </div>
         </section>
 
@@ -211,14 +258,14 @@
                         <div class="info-icon">📍</div>
                         <div class="info-content">
                             <h3>Endereço</h3>
-                            <p>Rua Exemplo, 123 - Centro</p>
+                            <p>Rua Lourival Messias 130 Pilar-AL</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-icon">📱</div>
                         <div class="info-content">
                             <h3>Telefone</h3>
-                            <p>(00) 00000-0000</p>
+                            <p>(82)99600-9360</p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -232,9 +279,23 @@
                 </div>
                 <div class="map-container">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.356219942321!2d-43.2316156!3d-22.912223400000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997e58a085b7af%3A0x4d11e9a933d38ce3!2sCentro%2C%20Rio%20de%20Janeiro%20-%20RJ!5e0!3m2!1spt-BR!2sbr!4v1593536446195!5m2!1spt-BR!2sbr"
-                        width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen=""
-                        aria-hidden="false" tabindex="0"></iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4277.212723726623!2d-35.96713588901271!3d-9.594300301059748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMzUnMzkuNSJTIDM1wrA1Nyc1Mi40Ilc!5e1!3m2!1spt-BR!2sbr!4v1742068071364!5m2!1spt-BR!2sbr"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <a href="https://maps.google.com/?q=Rua+Lourival+Messias+130+Pilar+AL" target="_blank"
+                        rel="noopener noreferrer" class="map-overlay">
+                        <div class="view-on-google-maps">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            Ver no Google Maps
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>

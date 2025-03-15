@@ -83,6 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Inicializar filtros de galeria
+    initGalleryFilters();
+
+    // Inicializar lightbox melhorado
+    initLightbox();
 });
 
 // Controle do Sidebar - Versão melhorada
@@ -288,28 +294,91 @@ function addSwipeListeners(element) {
 }
 
 // Lightbox da Galeria
+let currentImageIndex = 0;
+let galleryImages = [];
+
+function initLightbox() {
+    // Coletar todas as imagens da galeria
+    const galleryImgElements = document.querySelectorAll('.gallery-item:not(.featured-video) img');
+    galleryImages = Array.from(galleryImgElements);
+}
+
+// Abrir lightbox com a imagem clicada
 function openLightbox(img) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
 
     if (lightbox && lightboxImg) {
-        lightboxImg.src = img.src;
-        lightbox.classList.add('active');
+        // Encontrar o índice da imagem atual
+        currentImageIndex = galleryImages.indexOf(img);
 
-        // Impedir rolagem da página
+        // Definir a imagem
+        lightboxImg.src = img.src;
+
+        // Tentar obter o caption a partir do overlay
+        const overlayTitle = img.closest('.gallery-item').querySelector('.overlay-content h3');
+        const overlayDesc = img.closest('.gallery-item').querySelector('.overlay-content p');
+
+        if (overlayTitle && overlayDesc) {
+            lightboxCaption.innerHTML = `<h3>${overlayTitle.textContent}</h3><p>${overlayDesc.textContent}</p>`;
+        } else {
+            lightboxCaption.innerHTML = img.alt;
+        }
+
+        // Mostrar lightbox
+        lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 }
 
+// Fechar lightbox
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
     if (lightbox) {
         lightbox.classList.remove('active');
-
-        // Permitir rolagem da página novamente
         document.body.style.overflow = 'auto';
     }
 }
+
+// Navegar entre as imagens
+function changeImage(direction) {
+    if (galleryImages.length === 0) return;
+
+    currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
+    const newImage = galleryImages[currentImageIndex];
+
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    if (lightboxImg && newImage) {
+        lightboxImg.src = newImage.src;
+
+        // Tentar obter o caption a partir do overlay
+        const overlayTitle = newImage.closest('.gallery-item').querySelector('.overlay-content h3');
+        const overlayDesc = newImage.closest('.gallery-item').querySelector('.overlay-content p');
+
+        if (overlayTitle && overlayDesc) {
+            lightboxCaption.innerHTML = `<h3>${overlayTitle.textContent}</h3><p>${overlayDesc.textContent}</p>`;
+        } else {
+            lightboxCaption.innerHTML = newImage.alt;
+        }
+    }
+}
+
+// Evento de teclado para navegação no lightbox
+document.addEventListener('keydown', function (e) {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && lightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') {
+            changeImage(-1);
+        } else if (e.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    }
+});
 
 // Chatbot
 function toggleChatbot() {
@@ -448,3 +517,97 @@ function closeVideoModal() {
         document.body.style.overflow = 'auto';
     }
 }
+
+// Função para inicializar os filtros da galeria
+function initGalleryFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            // Remover active de todos os botões
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Adicionar active ao botão clicado
+            this.classList.add('active');
+
+            // Aplicar o filtro
+            const filter = this.getAttribute('data-filter');
+            filterGalleryItems(filter);
+        });
+    });
+}
+
+// Função para filtrar os itens da galeria
+function filterGalleryItems(filter) {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    galleryItems.forEach(item => {
+        if (filter === 'all') {
+            item.classList.remove('hide');
+            setTimeout(() => {
+                item.classList.add('show');
+            }, 10);
+        } else {
+            if (item.getAttribute('data-category') === filter) {
+                item.classList.remove('hide');
+                setTimeout(() => {
+                    item.classList.add('show');
+                }, 10);
+            } else {
+                item.classList.remove('show');
+                item.classList.add('hide');
+            }
+        }
+    });
+}
+
+// Função para redirecionar para o WhatsApp (versão simplificada)
+function redirectToWhatsApp(e) {
+    e.preventDefault();
+
+    // Obter os valores dos campos
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    // Validação básica
+    if (!name || !phone) {
+        alert('Por favor, preencha seu nome e telefone para agendar.');
+        return;
+    }
+
+    // Construir a mensagem para o WhatsApp
+    let message = `Olá! Gostaria de agendar um horário na Terto Barbearia.\n\n`;
+    message += `*Nome:* ${name}\n`;
+    message += `*Telefone:* ${phone}\n`;
+    message += `\nPor favor, gostaria de informações sobre disponibilidade e valores dos serviços.`;
+
+    // Número da barbearia - atualize com o número correto
+    const whatsappNumber = '5582996009360'; // Inclui o código do país (55) para o Brasil
+
+    // Codificar a mensagem para URL
+    const encodedMessage = encodeURIComponent(message);
+
+    // Criar o link do WhatsApp
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    // Redirecionar para o WhatsApp
+    window.open(whatsappLink, '_blank');
+}
+
+// Adicionar máscara para o campo de telefone
+document.addEventListener('DOMContentLoaded', function () {
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+
+            // Formatar: (XX) XXXXX-XXXX
+            if (value.length > 0) {
+                value = `(${value.slice(0, 2)})${value.length > 2 ? ' ' + value.slice(2, 7) : ''}${value.length > 7 ? '-' + value.slice(7, 11) : ''}`;
+            }
+
+            e.target.value = value;
+        });
+    }
+});
