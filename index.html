@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Terto Barbearia</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loader">
+        <div class="loader-icon"></div>
+    </div>
+
+    <!-- Menu Lateral (estrutura recomendada) -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>Terto</h2>
+            <button class="close-btn" onclick="toggleSidebar()">×</button>
+        </div>
+        <div class="sidebar-links">
+            <a href="#home">Home</a>
+            <a href="sobre.html">Nossa História</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#agendamento">Agendamento</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#contato">Contato</a>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <button class="open-btn" onclick="toggleSidebar()">☰</button>
+        <div class="logo">Terto Barbearia</div>
+        <nav class="desktop-nav">
+            <a href="#home">Home</a>
+            <a href="sobre.html">Nossa História</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#agendamento">Agendamento</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>Bem-vindo A Terto Barbearia</h1>
+                <p class="tagline">Seu estilo, nossa arte.</p>
+                <a href="#agendamento" class="cta-button">Agendar Horário</a>
+            </div>
+        </section>
+
+        <section id="servicos" class="services-section">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>Corte Moderno</h3>
+                    <p>Cortes atualizados com as tendências do momento.</p>
+                    <span class="price">R$ 35,00</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🪒</div>
+                    <h3>Barba Completa</h3>
+                    <p>Modelagem e tratamento completo para sua barba.</p>
+                    <span class="price">R$ 25,00</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💈</div>
+                    <h3>Combo Corte + Barba</h3>
+                    <p>Pacote completo para renovar seu visual.</p>
+                    <span class="price">R$ 55,00</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧴</div>
+                    <h3>Tratamento Capilar</h3>
+                    <p>Hidratação e cuidados para cabelos danificados.</p>
+                    <span class="price">R$ 45,00</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carrossel Melhorado -->
+        <section class="carousel-section">
+            <h2 class="section-title">Nosso Espaço</h2>
+            <div class="carousel">
+                <div class="carousel-track-container">
+                    <div class="carousel-images" id="carousel-images">
+                        <div class="carousel-slide">
+                            <img src="img/carrocel-1.png" alt="Interior da Barbearia" loading="lazy">
+                            <div class="slide-caption">
+                                <h3>Ambiente Moderno</h3>
+                                <p>Um espaço pensado para seu conforto e estilo</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/carrocel-2.png" alt="Estação de Trabalho" loading="lazy">
+                            <div class="slide-caption">
+                                <h3>Equipamentos Profissionais</h3>
+                                <p>Tecnologia e tradição para o melhor resultado</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/carrocel-4.png" alt="Sala de Espera" loading="lazy">
+                            <div class="slide-caption">
+                                <h3>Área de Relaxamento</h3>
+                                <p>Aguarde seu atendimento com todo o conforto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" onclick="moveSlide(-1)" aria-label="Imagem anterior">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="carousel-indicators" id="carousel-indicators"></div>
+                    <button class="carousel-btn next-btn" onclick="moveSlide(1)" aria-label="Próxima imagem">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria de Fotos -->
+        <section id="galeria" class="gallery-section">
+            <h2 class="section-title">Galeria de Trabalhos</h2>
+            <div class="photo-gallery">
+                <div class="gallery-item">
+                    <img src="img/f-1.png" alt="Foto 1" onclick="openLightbox(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/f-2.png" alt="Foto 2" onclick="openLightbox(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/f-3.png" alt="Foto 3" onclick="openLightbox(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/f-4.png" alt="Foto 4" onclick="openLightbox(this)">
+                </div>
+            </div>
+
+            <div id="lightbox" class="lightbox">
+                <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+                <img id="lightbox-img" class="lightbox-content">
+            </div>
+        </section>
+
+        <!-- Testimonial melhorado -->
+        <section class="testimonial-section">
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <div class="quote-mark start-quote">❝</div>
+                    <p>Somos apaixonados por oferecer o melhor serviço e experiência para nossos clientes.</p>
+                    <div class="quote-mark end-quote">❞</div>
+                    <div class="testimonial-author">
+                        <img src="img/founder.jpg" alt="Jonatas Terto" class="author-image">
+                        <cite>— Jonatas Terto, Fundador</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulário de Agendamento -->
+        <section id="agendamento" class="schedule-section">
+            <h2 class="section-title">Agendar Horário</h2>
+            <div class="schedule-form">
+                <div class="form-group">
+                    <label for="name">Nome completo</label>
+                    <input type="text" id="name" placeholder="Seu Nome">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone" placeholder="(00) 00000-0000">
+                </div>
+                <div class="form-group">
+                    <label for="service">Serviço</label>
+                    <select id="service">
+                        <option value="">Selecione um serviço</option>
+                        <option value="corte">Corte Moderno</option>
+                        <option value="barba">Barba Completa</option>
+                        <option value="combo">Combo Corte + Barba</option>
+                        <option value="tratamento">Tratamento Capilar</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="datetime">Data e Hora</label>
+                    <input type="datetime-local" id="datetime">
+                </div>
+                <button class="submit-btn" onclick="scheduleAppointment()">Agendar agora</button>
+            </div>
+        </section>
+
+        <!-- Contato e Localização -->
+        <section id="contato" class="contact-section">
+            <h2 class="section-title">Contato e Localização</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <h3>Endereço</h3>
+                            <p>Rua Exemplo, 123 - Centro</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📱</div>
+                        <div class="info-content">
+                            <h3>Telefone</h3>
+                            <p>(00) 00000-0000</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">⏰</div>
+                        <div class="info-content">
+                            <h3>Horário de Funcionamento</h3>
+                            <p>Ter-Dom: 07h às 19h</p>
+                            <p>Segunda: Fechado</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.356219942321!2d-43.2316156!3d-22.912223400000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997e58a085b7af%3A0x4d11e9a933d38ce3!2sCentro%2C%20Rio%20de%20Janeiro%20-%20RJ!5e0!3m2!1spt-BR!2sbr!4v1593536446195!5m2!1spt-BR!2sbr"
+                        width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot -->
+    <button class="chatbot-btn" onclick="toggleChatbot()">💬</button>
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <h3>Chat da Terto</h3>
+            <button class="close-chat" onclick="toggleChatbot()">×</button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+            <div class="bot-message">Olá! Como posso ajudar você hoje?</div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chat-input" placeholder="Digite sua mensagem">
+            <button onclick="sendMessage()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <h2>Terto Barbearia</h2>
+                    <p>Estilo e tradição desde 2020</p>
+                </div>
+                <div class="footer-contact">
+                    <p><strong>Endereço:</strong> Rua Exemplo, 123 - Centro</p>
+                    <p><strong>Telefone:</strong> (00) 00000-0000</p>
+                    <p><strong>Email:</strong> contato@tertobarbearia.com</p>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#agendamento">Agendamento</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Siga-nos</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="social-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                            </path>
+                        </svg>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="https://wa.me/5500000000000" target="_blank" aria-label="WhatsApp" class="social-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z">
+                            </path>
+                        </svg>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-payments">
+                <h3>Formas de Pagamento</h3>
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <span class="payment-icon">💵</span>
+                        <span>Dinheiro</span>
+                    </div>
+                    <div class="payment-method">
+                        <span class="payment-icon">💳</span>
+                        <span>Crédito</span>
+                    </div>
+                    <div class="payment-method">
+                        <span class="payment-icon">💳</span>
+                        <span>Débito</span>
+                    </div>
+                    <div class="payment-method">
+                        <span class="payment-icon">📱</span>
+                        <span>PIX</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-newsletter">
+                <h3>Receba Novidades</h3>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor email">
+                    <button type="button">Inscrever</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 A Terto Barbearia. Todos os direitos reservados.</p>
+            <p>Desenvolvido Por: <a href="#" target="_blank">Ivonildo Lima</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

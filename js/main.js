@@ -1,0 +1,450 @@
+// Main JavaScript para o site da Terto Barbearia
+
+// Loader
+document.addEventListener('DOMContentLoaded', () => {
+    // Ocultar o loader depois de 1,5 segundos
+    setTimeout(() => {
+        const loader = document.querySelector('.loader');
+        loader.style.opacity = '0';
+
+        // Remover o loader do DOM após a animação de fade out
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }, 1500);
+
+    // Inicializar o carrossel
+    initCarousel();
+
+    // Adicionar classe ao header quando rolar a página
+    window.addEventListener('scroll', function () {
+        const header = document.querySelector('.main-header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Adicionar evento de escuta ao input do chat
+    const chatInput = document.getElementById('chat-input');
+    if (chatInput) {
+        chatInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    }
+
+    // Animação de scroll suave para links de navegação
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                // Fechar sidebar se estiver aberta em dispositivos móveis
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar && sidebar.classList.contains('active')) {
+                    toggleSidebar();
+                }
+
+                // Calcular posição com offset do header
+                const headerHeight = document.querySelector('.main-header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Adiciona escape key para fechar sidebar
+    document.addEventListener('keydown', function (e) {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar && e.key === 'Escape' && sidebar.classList.contains('active')) {
+            toggleSidebar();
+        }
+    });
+
+    // Marcar links ativos no menu
+    setActiveMenuLinks();
+
+    // Adicionar evento para fechar o modal ao clicar fora
+    const videoModal = document.getElementById('video-modal');
+    if (videoModal) {
+        window.addEventListener('click', function (event) {
+            if (event.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+    }
+});
+
+// Controle do Sidebar - Versão melhorada
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
+    const overlay = document.getElementById('overlay');
+
+    // Cria um overlay escuro se ele não existir
+    if (!overlay && !sidebar.classList.contains('active')) {
+        const overlayDiv = document.createElement('div');
+        overlayDiv.id = 'overlay';
+        overlayDiv.className = 'sidebar-overlay';
+        overlayDiv.onclick = toggleSidebar; // Fecha ao clicar fora
+        document.body.appendChild(overlayDiv);
+
+        // Animação de fade in para o overlay
+        setTimeout(() => {
+            overlayDiv.style.opacity = '1';
+        }, 10);
+    } else if (overlay) {
+        // Fade out do overlay
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            document.body.removeChild(overlay);
+        }, 300);
+    }
+
+    // Alterna a classe active no sidebar
+    sidebar.classList.toggle('active');
+
+    // Impede a rolagem do body quando o sidebar está aberto
+    if (sidebar.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Controle do Carrossel - Versão melhorada
+let slideIndex = 0;
+let slideInterval;
+let isPlaying = true;
+let slideDuration = 5000; // 5 segundos por slide
+
+function initCarousel() {
+    const carouselImages = document.getElementById('carousel-images');
+    const indicatorsContainer = document.getElementById('carousel-indicators');
+
+    if (!carouselImages || !indicatorsContainer) return;
+
+    const slides = carouselImages.getElementsByClassName('carousel-slide');
+    if (slides.length === 0) return;
+
+    // Criar indicadores com animação de progresso
+    for (let i = 0; i < slides.length; i++) {
+        const indicator = document.createElement('div');
+        indicator.className = 'indicator';
+        indicator.onclick = function () { jumpToSlide(i); };
+
+        if (i === 0) {
+            indicator.classList.add('active');
+            startProgressAnimation(indicator);
+        }
+
+        indicatorsContainer.appendChild(indicator);
+    }
+
+    // Inicializar primeiro slide como ativo
+    slides[0].classList.add('active');
+
+    // Adicionar swipe para dispositivos móveis
+    addSwipeListeners(carouselImages.parentElement);
+
+    // Iniciar carrossel automático
+    startSlideInterval();
+
+    // Pausar carrossel ao passar o mouse
+    const carousel = document.querySelector('.carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', pauseSlideshow);
+        carousel.addEventListener('mouseleave', resumeSlideshow);
+    }
+}
+
+function startProgressAnimation(indicator) {
+    // Reset any existing animation
+    const indicatorAfter = indicator.querySelector('::after');
+    if (indicatorAfter) {
+        indicatorAfter.style.transition = 'none';
+        indicatorAfter.style.width = '0';
+        setTimeout(() => {
+            indicatorAfter.style.transition = `width ${slideDuration}ms linear`;
+            indicatorAfter.style.width = '100%';
+        }, 10);
+    }
+}
+
+function pauseSlideshow() {
+    clearInterval(slideInterval);
+    isPlaying = false;
+
+    // Pause the progress animation
+    const activeIndicator = document.querySelector('.indicator.active::after');
+    if (activeIndicator) {
+        const computedStyle = window.getComputedStyle(activeIndicator);
+        const width = computedStyle.getPropertyValue('width');
+        activeIndicator.style.transition = 'none';
+        activeIndicator.style.width = width;
+    }
+}
+
+function resumeSlideshow() {
+    if (!isPlaying) {
+        startSlideInterval();
+        isPlaying = true;
+
+        // Resume the progress animation
+        const activeIndicator = document.querySelector('.indicator.active');
+        if (activeIndicator) {
+            startProgressAnimation(activeIndicator);
+        }
+    }
+}
+
+function startSlideInterval() {
+    // Clear any existing interval
+    clearInterval(slideInterval);
+
+    slideInterval = setInterval(() => {
+        moveSlide(1);
+    }, slideDuration);
+}
+
+function moveSlide(n) {
+    const carouselImages = document.getElementById('carousel-images');
+    if (!carouselImages) return;
+
+    const slides = carouselImages.getElementsByClassName('carousel-slide');
+    const indicators = document.getElementsByClassName('indicator');
+
+    if (slides.length === 0) return;
+
+    // Remove active class from current slide
+    slides[slideIndex].classList.remove('active');
+    indicators[slideIndex].classList.remove('active');
+
+    // Calculate new slide index
+    slideIndex = (slideIndex + n + slides.length) % slides.length;
+
+    // Add active class to new slide
+    slides[slideIndex].classList.add('active');
+    indicators[slideIndex].classList.add('active');
+
+    // Start progress animation for the active indicator
+    startProgressAnimation(indicators[slideIndex]);
+
+    // Move the carousel
+    carouselImages.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+    // Restart the interval timer
+    if (isPlaying) {
+        startSlideInterval();
+    }
+}
+
+function jumpToSlide(n) {
+    if (slideIndex === n) return;
+
+    const direction = n > slideIndex ? 1 : -1;
+    moveSlide(direction * Math.abs(n - slideIndex));
+}
+
+// Adicionar funcionalidade de swipe para dispositivos móveis
+function addSwipeListeners(element) {
+    if (!element) return;
+
+    let startX;
+    let endX;
+    const threshold = 50; // Minimum distance to be considered a swipe
+
+    element.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, false);
+
+    element.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+        const distance = endX - startX;
+        if (Math.abs(distance) >= threshold) {
+            if (distance > 0) {
+                // Swipe right - go to previous slide
+                moveSlide(-1);
+            } else {
+                // Swipe left - go to next slide
+                moveSlide(1);
+            }
+        }
+    }
+}
+
+// Lightbox da Galeria
+function openLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    if (lightbox && lightboxImg) {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+
+        // Impedir rolagem da página
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.classList.remove('active');
+
+        // Permitir rolagem da página novamente
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Chatbot
+function toggleChatbot() {
+    const chatbot = document.getElementById('chatbot');
+    const chatbotBtn = document.querySelector('.chatbot-btn');
+
+    if (!chatbot) return;
+
+    chatbot.classList.toggle('active');
+
+    if (chatbot.classList.contains('active')) {
+        if (chatbotBtn) chatbotBtn.style.display = 'none';
+        const chatInput = document.getElementById('chat-input');
+        if (chatInput) chatInput.focus();
+    } else {
+        setTimeout(() => {
+            if (chatbotBtn) chatbotBtn.style.display = 'flex';
+        }, 300);
+    }
+}
+
+// Função para enviar mensagem no chatbot
+function sendMessage() {
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chatbot-messages');
+
+    if (!chatInput || !chatMessages || !chatInput.value.trim()) return;
+
+    // Criar e adicionar mensagem do usuário
+    const userMessageDiv = document.createElement('div');
+    userMessageDiv.className = 'user-message';
+    userMessageDiv.textContent = chatInput.value;
+    chatMessages.appendChild(userMessageDiv);
+
+    // Limpar input
+    const userMessage = chatInput.value;
+    chatInput.value = '';
+
+    // Rolar para a mensagem mais recente
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // Simular resposta do bot (após um pequeno delay)
+    setTimeout(() => {
+        const botMessageDiv = document.createElement('div');
+        botMessageDiv.className = 'bot-message';
+
+        // Respostas simples baseadas em palavras-chave
+        if (userMessage.toLowerCase().includes('horário') || userMessage.toLowerCase().includes('hora')) {
+            botMessageDiv.textContent = 'Nosso horário de funcionamento é de segunda a sábado, das 7h às 19h.';
+        } else if (userMessage.toLowerCase().includes('preço') || userMessage.toLowerCase().includes('valor') || userMessage.toLowerCase().includes('quanto')) {
+            botMessageDiv.textContent = 'Nossos preços: Corte R$35, Barba R$25, Combo Corte+Barba R$55, Tratamento Capilar R$45.';
+        } else if (userMessage.toLowerCase().includes('agendamento') || userMessage.toLowerCase().includes('marcar') || userMessage.toLowerCase().includes('agendar')) {
+            botMessageDiv.textContent = 'Para agendar, você pode usar nosso formulário de agendamento ou entrar em contato pelo telefone.';
+        } else if (userMessage.toLowerCase().includes('endereço') || userMessage.toLowerCase().includes('local') || userMessage.toLowerCase().includes('onde')) {
+            botMessageDiv.textContent = 'Estamos localizados na Rua Exemplo, 123 - Centro.';
+        } else if (userMessage.toLowerCase().includes('fundador') || userMessage.toLowerCase().includes('dono')) {
+            botMessageDiv.textContent = 'Nossa barbearia foi fundada por Jonatas Terto em 2015. Jonatas tem mais de 15 anos de experiência como barbeiro e é apaixonado por proporcionar o melhor atendimento aos clientes.';
+        } else {
+            botMessageDiv.textContent = 'Obrigado por entrar em contato! Como posso ajudar com nossos serviços de barbearia?';
+        }
+
+        chatMessages.appendChild(botMessageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 800);
+}
+
+// Função para agendamento
+function scheduleAppointment() {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const service = document.getElementById('service').value;
+    const datetime = document.getElementById('datetime').value;
+
+    if (!name || !phone || !service || !datetime) {
+        alert('Por favor, preencha todos os campos para agendar.');
+        return;
+    }
+
+    // Aqui você normalmente enviaria os dados para um servidor
+    // Como é apenas demonstração, vamos mostrar um alerta
+    alert(`Agendamento recebido!\n\nNome: ${name}\nTelefone: ${phone}\nServiço: ${service}\nData e Hora: ${datetime}\n\nEntraremos em contato para confirmar seu horário.`);
+
+    // Limpar formulário
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('service').value = '';
+    document.getElementById('datetime').value = '';
+}
+
+// Função para marcar links ativos no menu
+function setActiveMenuLinks() {
+    // Obter o caminho da página atual
+    const currentPage = window.location.pathname.split('/').pop();
+
+    // Encontrar todos os links do menu
+    const navLinks = document.querySelectorAll('.desktop-nav a, .sidebar-links a');
+
+    navLinks.forEach(link => {
+        // Remover a classe active de todos os links
+        link.classList.remove('active');
+
+        // Verificar se o link corresponde à página atual
+        const linkHref = link.getAttribute('href');
+
+        if (currentPage === '' || currentPage === 'index.html') {
+            // Estamos na página inicial
+            if (linkHref.startsWith('#') || linkHref === 'index.html') {
+                // Não marcamos os links internos como ativos automaticamente
+                // porque eles serão ativados pelo scroll
+            }
+        } else if (linkHref === currentPage || linkHref.includes(currentPage)) {
+            // Estamos em uma página secundária e o link aponta para ela
+            link.classList.add('active');
+        }
+    });
+}
+
+// Funções para o modal de vídeo
+function openVideoModal(videoSrc) {
+    const modal = document.getElementById('video-modal');
+    const videoFrame = document.getElementById('video-frame');
+    if (modal && videoFrame) {
+        videoFrame.src = videoSrc;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeVideoModal() {
+    const modal = document.getElementById('video-modal');
+    const videoFrame = document.getElementById('video-frame');
+    if (modal && videoFrame) {
+        modal.style.display = 'none';
+        // Importante: limpar o src para parar o vídeo
+        videoFrame.src = '';
+        document.body.style.overflow = 'auto';
+    }
+}
