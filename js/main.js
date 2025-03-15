@@ -427,15 +427,15 @@ function sendMessage() {
 
         // Respostas simples baseadas em palavras-chave
         if (userMessage.toLowerCase().includes('horário') || userMessage.toLowerCase().includes('hora')) {
-            botMessageDiv.textContent = 'Nosso horário de funcionamento é de segunda a sábado, das 7h às 19h.';
+            botMessageDiv.textContent = 'Nosso horário de funcionamento é de Terça a sábado, das 7h às 19h e Domingo ate as 14:00 segunda e Fechado.';
         } else if (userMessage.toLowerCase().includes('preço') || userMessage.toLowerCase().includes('valor') || userMessage.toLowerCase().includes('quanto')) {
-            botMessageDiv.textContent = 'Nossos preços: Corte R$35, Barba R$25, Combo Corte+Barba R$55, Tratamento Capilar R$45.';
+            botMessageDiv.textContent = 'Nossos preços estao nos card va la de uma conferida .';
         } else if (userMessage.toLowerCase().includes('agendamento') || userMessage.toLowerCase().includes('marcar') || userMessage.toLowerCase().includes('agendar')) {
-            botMessageDiv.textContent = 'Para agendar, você pode usar nosso formulário de agendamento ou entrar em contato pelo telefone.';
+            botMessageDiv.textContent = 'Para agendar, você pode usar nosso formulário de agendamento ou entrar em contato pelo telefone no whatzap : 829 99600-9360.';
         } else if (userMessage.toLowerCase().includes('endereço') || userMessage.toLowerCase().includes('local') || userMessage.toLowerCase().includes('onde')) {
-            botMessageDiv.textContent = 'Estamos localizados na Rua Exemplo, 123 - Centro.';
+            botMessageDiv.textContent = 'Estamos localizados na Rua Lorival Messias 130 Pilar-AL.';
         } else if (userMessage.toLowerCase().includes('fundador') || userMessage.toLowerCase().includes('dono')) {
-            botMessageDiv.textContent = 'Nossa barbearia foi fundada por Jonatas Terto em 2015. Jonatas tem mais de 15 anos de experiência como barbeiro e é apaixonado por proporcionar o melhor atendimento aos clientes.';
+            botMessageDiv.textContent = 'Nossa barbearia foi fundada por Jonatas Terto em 2019. Jonatas tem mais de 5 anos de experiência como barbeiro e é apaixonado por proporcionar o melhor atendimento aos clientes.';
         } else {
             botMessageDiv.textContent = 'Obrigado por entrar em contato! Como posso ajudar com nossos serviços de barbearia?';
         }
@@ -608,6 +608,66 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             e.target.value = value;
+        });
+    }
+});
+
+// Funções para a galeria
+document.addEventListener('DOMContentLoaded', function () {
+    // Filtros da galeria
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remover classe ativa de todos os botões
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Adicionar classe ativa ao botão clicado
+            button.classList.add('active');
+
+            // Filtrar itens da galeria
+            const filter = button.dataset.filter;
+
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+
+// Funções do Lightbox
+function openLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    lightboxImg.src = img.src;
+    lightbox.style.display = 'flex';
+
+    // Evitar rolagem da página
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+
+    // Permitir rolagem novamente
+    document.body.style.overflow = 'auto';
+}
+
+// Fechar o lightbox ao clicar fora da imagem
+document.addEventListener('DOMContentLoaded', function () {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
         });
     }
 });

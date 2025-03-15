@@ -1,17 +1,14 @@
--js\tertobarbearia\sobre.html
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossa História | Terto Barbearia</title>
+    <title>Nossa História - Terto Barbearia</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -22,11 +19,15 @@
     <!-- Menu Lateral -->
     <div id="sidebar" class="sidebar">
         <div class="sidebar-header">
-            <h2>Terto</h2>
+            <div class="sidebar-logo">
+                <a href="index.html">
+                    <img src="img/logo-white.png" alt="Terto Barbearia Logo" class="sidebar-logo-image">
+                </a>
+            </div>
             <button class="close-btn" onclick="toggleSidebar()">×</button>
         </div>
         <div class="sidebar-links">
-            <a href="index.html#home">Home</a>
+            <a href="index.html">Home</a>
             <a href="sobre.html" class="active">Nossa História</a>
             <a href="index.html#servicos">Serviços</a>
             <a href="index.html#agendamento">Agendamento</a>
@@ -37,9 +38,13 @@
 
     <header class="main-header">
         <button class="open-btn" onclick="toggleSidebar()">☰</button>
-        <div class="logo">Terto Barbearia</div>
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logo.png" alt="Terto Barbearia Logo" class="logo-image">
+            </a>
+        </div>
         <nav class="desktop-nav">
-            <a href="index.html#home">Home</a>
+            <a href="index.html">Home</a>
             <a href="sobre.html" class="active">Nossa História</a>
             <a href="index.html#servicos">Serviços</a>
             <a href="index.html#agendamento">Agendamento</a>
@@ -48,144 +53,107 @@
         </nav>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main class="main-content">
-        <!-- Banner da página -->
-        <section class="page-banner">
-            <div class="banner-content">
-                <h1>Nossa História</h1>
-                <p>Conheça a trajetória da Terto Barbearia</p>
-            </div>
-        </section>
-
-        <!-- História da Barbearia -->
-        <section class="history-section">
+        <!-- Seção Sobre -->
+        <section class="about-section">
             <div class="container">
-                <div class="history-content">
-                    <div class="history-text">
-                        <h2 class="section-title">Como Tudo Começou</h2>
-                        <p class="featured-text">A Terto Barbearia nasceu da paixão de Jonatas Terto pela arte da
-                            barbearia
-                            tradicional, combinada com técnicas modernas e um atendimento diferenciado.</p>
+                <h1 class="section-title">Nossa História</h1>
 
-                        <div class="founder-story">
-                            <p>Em 2019, Jonatas Terto deu os primeiros passos no mundo da barbearia em Maceió,
-                                trabalhando na MyBoos Club, onde seu amigo Alan Martins lhe deu a primeira oportunidade.
-                                Com dedicação e vontade de crescer, decidiu se especializar e fez um curso de barbeiro,
-                                aprimorando suas habilidades e ganhando experiência no ramo.</p>
-
-                            <p>Após um ano e meio de aprendizado, sentiu que era o momento de dar um passo maior. Em
-                                2021, com coragem e determinação, abriu sua própria barbearia na Chã do Pilar. O espaço
-                                era pequeno, mas carregava grandes sonhos. Cada cliente atendido, cada corte realizado,
-                                representava um passo a mais em sua jornada de crescimento.</p>
-
-                            <p>Com muito esforço e paixão pelo ofício, Jonatas foi conquistando sua clientela e
-                                fortalecendo sua marca. O reconhecimento veio, e em junho de 2024, um novo capítulo
-                                começou: a barbearia foi expandida para uma unidade maior, mais moderna e confortável.
-                                Agora, ao lado de sua esposa e funcionária, Rayssa, Jonatas segue firme em sua missão de
-                                oferecer um serviço de qualidade.</p>
-
-                            <p class="story-conclusion">O que começou como uma simples oportunidade se transformou em
-                                uma história de perseverança e sucesso, mostrando que, com trabalho duro e dedicação,
-                                sonhos podem se tornar realidade.</p>
-                        </div>
-
+                <!-- Seção do Fundador -->
+                <div class="founder-section">
+                    <div class="founder-content">
+                        <h2>A visão de Jonatas Terto</h2>
+                        <p>A Terto Barbearia nasceu em 2020, fruto da paixão de Jonatas Terto pela arte da barbearia.
+                            Desde jovem, Jonatas sempre demonstrou talento excepcional para cortes de cabelo e barba,
+                            desenvolvendo técnicas únicas que combinam tradição e modernidade.</p>
+                        <p>Com determinação e visão de futuro, Jonatas transformou seu sonho em realidade ao abrir as
+                            portas de sua barbearia em Pilar-AL, trazendo um conceito diferenciado de atendimento
+                            personalizado e qualidade superior.</p>
+                        <p>Hoje, a Terto Barbearia é reconhecida como referência na região, atraindo clientes que buscam
+                            não apenas um corte de cabelo, mas uma experiência completa de cuidado e estilo.</p>
                     </div>
-                    <div class="history-image">
-                        <img src="/img/fundador.jpg" alt="Jonatas Terto, fundador da barbearia" loading="lazy">
-                        <div class="image-caption">
-                            <p>Jonatas Terto, fundador e barbeiro principal</p>
-                        </div>
+                    <div class="founder-image">
+                        <img src="img/fundador.jpg" alt="Jonatas Terto, fundador da barbearia" loading="lazy">
                     </div>
                 </div>
 
-                <div class="mission-values">
-                    <div class="mission-card">
-                        <h3>Missão</h3>
-                        <p>Proporcionar uma experiência única de barbearia, combinando técnicas tradicionais com
-                            tendências modernas, valorizando a autoestima e o bem-estar dos nossos clientes.</p>
-                    </div>
-                    <div class="mission-card">
-                        <h3>Visão</h3>
-                        <p>Ser reconhecida como a melhor barbearia da região, referência em qualidade, atendimento e
-                            inovação no segmento de cuidados masculinos.</p>
-                    </div>
-                    <div class="mission-card">
-                        <h3>Valores</h3>
-                        <ul>
-                            <li>Excelência em cada detalhe</li>
-                            <li>Respeito e atenção personalizada</li>
-                            <li>Ambiente acolhedor e descontraído</li>
-                            <li>Atualização constante em técnicas e tendências</li>
-                            <li>Compromisso com a satisfação do cliente</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Linha do Tempo -->
-        <section class="timeline-section">
-            <div class="container">
+                <!-- Timeline da História -->
                 <h2 class="section-title">Nossa Trajetória</h2>
                 <div class="timeline">
                     <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">2019</div>
                         <div class="timeline-content">
-                            <h3>O Início</h3>
-                            <p>Jonatas Terto abre a primeira unidade da barbearia com apenas uma cadeira e muitos
-                                sonhos.
+                            <div class="timeline-date">2020</div>
+                            <h3>Primeiros Passos</h3>
+                            <p>Abertura da primeira unidade da Terto Barbearia em um pequeno espaço no centro de Pilar.
                             </p>
                         </div>
                     </div>
-
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2023</div>
-                    <div class="timeline-content">
-                        <h3>Nova Sede</h3>
-                        <p>Mudança para o espaço atual, muito mais amplo e confortável, com 2 cadeiras de
-                            atendimento.</p>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2021</div>
+                            <h3>Crescimento</h3>
+                            <p>Expansão da equipe e introdução de novos serviços especializados.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2022</div>
+                            <h3>Reconhecimento</h3>
+                            <p>Tem se Destacado Como O "Melhor Barbearia de Pilar" Segundo Opiniões De seus Clientes e
+                                amigos .</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2023</div>
+                            <h3>Novo Espaço</h3>
+                            <p>Mudança para um local maior e mais moderno, com ambiente planejado para proporcionar
+                                conforto máximo aos clientes.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Hoje</div>
+                            <h3>Referência Regional</h3>
+                            <p>A Terto Barbearia se consolida como referência na região, com clientes fiéis e uma
+                                reputação de excelência.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2020</div>
-                    <div class="timeline-content">
-                        <h3>Superando Desafios</h3>
-                        <p>Durante a pandemia, adaptação do negócio com protocolos rigorosos de segurança e sistema
-                            de agendamento online.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2025</div>
-                    <div class="timeline-content">
-                        <h3>Futuro</h3>
-                        <p>Planos para expansão com melhoria, mantendo a qualidade e o atendimento
-                            personalizado que são nossa marca registrada.</p>
-                    </div>
-                </div>
-            </div>
             </div>
         </section>
 
-        <!-- Galeria do Fundador -->
+        <!-- Correção da seção de equipe -->
+        <section class="team-section">
+            <div class="container">
+                <h2 class="section-title">Nossa Equipe</h2>
+                <p class="section-subtitle">Conheça os profissionais que fazem a diferença</p>
+
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="img/equipe.jpg" alt="Jonatas Terto" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3>Jonatas Terto</h3>
+                            <p class="member-role">Fundador e Barbeiro Master e sua Esposa Raysa</p>
+                            <p class="member-description">Com mais de 5 anos de experiência, Jonatas é especialista em
+                                cortes clássicos e desenhos na barba.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria de Fotos com imagens -->
         <section class="founder-gallery-section">
             <div class="container">
                 <h2 class="section-title">Nossa Galeria</h2>
-                <p class="gallery-intro">Conheça mais sobre a trajetória da Terto Barbearia através dessas imagens.</p>
-
-                <!-- Filtros da galeria -->
                 <div class="gallery-filters">
                     <button class="filter-btn active" data-filter="all">Todos</button>
                     <button class="filter-btn" data-filter="fundador">Fundador</button>
-                    <button class="filter-btn" data-filter="barbearia">Espaço</button>
+                    <button class="filter-btn" data-filter="barbearia">Barbearia</button>
                     <button class="filter-btn" data-filter="equipe">Equipe</button>
-                    <button class="filter-btn" data-filter="eventos">Eventos</button>
                 </div>
 
                 <div class="enhanced-gallery">
@@ -215,7 +183,7 @@
                     <div class="gallery-item" data-category="barbearia"
                         onclick="openLightbox(this.querySelector('img'))">
                         <div class="gallery-image">
-                            <img src="/img/foto-2.jpg" alt="Corte de cabelo na Terto Barbearia" loading="lazy">
+                            <img src="img/atendendo-1.png" alt="Corte de cabelo na Terto Barbearia" loading="lazy">
                         </div>
                         <div class="gallery-overlay">
                             <div class="overlay-content">
@@ -236,7 +204,7 @@
                     <div class="gallery-item" data-category="barbearia"
                         onclick="openLightbox(this.querySelector('img'))">
                         <div class="gallery-image">
-                            <img src="/img/foto-1.jpg" alt="Barba na Terto Barbearia" loading="lazy">
+                            <img src="img/cliente.png" alt="Barba na Terto Barbearia" loading="lazy">
                         </div>
                         <div class="gallery-overlay">
                             <div class="overlay-content">
@@ -279,7 +247,7 @@
                     <div class="gallery-item" data-category="barbearia"
                         onclick="openLightbox(this.querySelector('img'))">
                         <div class="gallery-image">
-                            <img src="/img/f-1.png" alt="Interior da Terto Barbearia" loading="lazy">
+                            <img src="img/f-4.png" alt="Interior da Terto Barbearia" loading="lazy">
                         </div>
                         <div class="gallery-overlay">
                             <div class="overlay-content">
@@ -296,135 +264,15 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Imagens do Espaço -->
-                    <div class="gallery-item" data-category="barbearia"
-                        onclick="openLightbox(this.querySelector('img'))">
-                        <div class="gallery-image">
-                            <img src="/img/f-2.png" alt="Interior da Terto Barbearia" loading="lazy">
-                        </div>
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h3>Nosso Espaço</h3>
-                                <p>Ambiente moderno e aconchegante para nossos clientes</p>
-                            </div>
-                            <div class="view-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- Vídeo destacado -->
-                    <div class="gallery-item featured-video" data-category="fundador"
-                        onclick="openVideoModal('https://www.youtube.com/embed/VIDEOID')">
-                        <div class="video-thumbnail">
-                            <img src="img/fundador.jpg" alt="Entrevista com Jonatas Terto" loading="lazy">
-                            <div class="play-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="video-caption">
-                            <h3>A História de Jonatas Terto</h3>
-                            <p>Neste vídeo, Jonatas conta como transformou sua paixão por barbearia em um negócio de
-                                sucesso.</p>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Lightbox para imagens -->
-        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-            <span class="close-lightbox">&times;</span>
-            <div class="lightbox-container">
-                <img class="lightbox-content" id="lightbox-img">
-                <div class="lightbox-caption" id="lightbox-caption"></div>
-                <button class="lightbox-nav prev-btn" onclick="changeImage(-1); event.stopPropagation();"
-                    aria-label="Imagem anterior">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                <button class="lightbox-nav next-btn" onclick="changeImage(1); event.stopPropagation();"
-                    aria-label="Próxima imagem">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- Equipe -->
-        <section class="team-section">
-            <div class="container">
-                <h2 class="section-title">Nossa Equipe</h2>
-                <p class="team-intro">Conheça os profissionais talentosos que fazem parte da família Terto Barbearia.
-                </p>
-
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="/img/equipe.jpg" alt="Jonatas Terto" loading="lazy">
-                        </div>
-                        <div class="member-info">
-                            <h3>Jonatas Terto</h3>
-                            <p class="member-role">Fundador e Barbeiro Master</p>
-                            <p class="member-description">Com mais de 5 anos de experiência, Jonatas é especialista em
-                                cortes clássicos e desenhos na barba.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
             </div>
         </section>
     </main>
 
-    <!-- Lightbox para imagens -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-lightbox">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-    </div>
-
-    <!-- Modal para vídeos -->
-    <div id="video-modal" class="video-modal">
-        <div class="video-modal-content">
-            <span class="close-video" onclick="closeVideoModal()">&times;</span>
-            <iframe id="video-frame" width="560" height="315" src="" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Chatbot -->
-    <button class="chatbot-btn" onclick="toggleChatbot()">💬</button>
-    <div id="chatbot" class="chatbot">
-        <div class="chatbot-header">
-            <h3>Chat da Terto</h3>
-            <button class="close-chat" onclick="toggleChatbot()">×</button>
-        </div>
-        <div id="chatbot-messages" class="chatbot-messages">
-            <div class="bot-message">Olá! Como posso ajudar você hoje?</div>
-        </div>
-        <div class="chatbot-input">
-            <input type="text" id="chat-input" placeholder="Digite sua mensagem">
-            <button onclick="sendMessage()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-            </button>
-        </div>
+    <!-- Lightbox para visualização de imagens em tamanho maior -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" class="lightbox-content">
     </div>
 
     <!-- Rodapé -->
@@ -544,35 +392,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script>
-        // Função para abrir modal de vídeo
-        function openVideoModal(videoSrc) {
-            const modal = document.getElementById('video-modal');
-            const videoFrame = document.getElementById('video-frame');
-            videoFrame.src = videoSrc;
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Função para fechar modal de vídeo
-        function closeVideoModal() {
-            const modal = document.getElementById('video-modal');
-            const videoFrame = document.getElementById('video-frame');
-            modal.style.display = 'none';
-            videoFrame.src = '';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Fechar modal de vídeo ao clicar fora do conteúdo
-        window.addEventListener('click', function (event) {
-            const modal = document.getElementById('video-modal');
-            if (event.target == modal) {
-                closeVideoModal();
-            }
-        });
-    </script>
 </body>
 
 </html>

@@ -100,6 +100,30 @@ button {
   color: var(--light-color);
   text-transform: uppercase;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  text-decoration: none;
+  display: block;
+}
+
+/* Estilos atualizados para o logo com bordas arredondadas */
+.logo-image {
+  height: 60px;
+  width: 60px; /* Mesmo valor da altura para forma perfeita */
+  border-radius: 50%; /* Forma circular */
+  object-fit: cover; /* Para garantir que a imagem preencha o espaço */
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para destacar */
+  border: 2px solid var(--secondary-color);
+  border-radius: 12px;
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(197, 157, 95, 0.5); /* Brilho na cor secundária */
 }
 
 .desktop-nav {
@@ -171,9 +195,9 @@ button {
 
 .sidebar-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1.2rem;
+  justify-content: space-between;
+  padding: 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -214,6 +238,21 @@ button {
   background-color: rgba(255, 255, 255, 0.1);
   border-left: 3px solid var(--secondary-color);
   color: var(--secondary-color);
+}
+
+/* Estilos para o logo na barra lateral */
+.sidebar-logo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* E também na barra lateral */
+.sidebar-logo-image {
+  height: 50px;
+  width: auto;
+  margin: 0 auto;
+  border-radius: 12px; /* Mesma borda arredondada */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Melhorias para o botão do menu */
@@ -1526,6 +1565,11 @@ section {
   .carousel-images img {
     height: 400px;
   }
+  
+  .logo-image {
+    height: 40px; /* Logo um pouco menor em dispositivos móveis */
+    border-radius: 10px; /* Ligeiramente menor para manter a proporção */
+  }
 }
 
 @media (max-width: 576px) {
@@ -2339,5 +2383,239 @@ section {
   .view-icon {
     transform: scale(1);
     opacity: 0.8;
+  }
+}
+
+/* Melhorias de responsividade para a página sobre.html */
+
+/* Estilos gerais da página sobre */
+.about-section {
+  padding: 5rem 2rem;
+}
+
+.founder-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.founder-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.founder-image {
+  flex: 1;
+  min-width: 300px;
+}
+
+.founder-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para a galeria na página sobre */
+.founder-gallery-section {
+  padding: 2rem 0;
+}
+
+.enhanced-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.gallery-image {
+  height: 300px;
+  overflow: hidden;
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Timeline responsiva */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 3rem auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: var(--secondary-color);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 10px 40px;
+  box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+
+.timeline-content {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-date {
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Equipe responsiva */
+.team-section {
+  padding: 4rem 2rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.team-member {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.member-image {
+  height: 280px;
+  overflow: hidden;
+}
+
+.member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-info {
+  padding: 1.5rem;
+}
+
+/* Responsividade - Media Queries */
+@media (max-width: 992px) {
+  .enhanced-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .gallery-image {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 3rem 1.5rem;
+  }
+  
+  .founder-section {
+    flex-direction: column;
+  }
+  
+  .founder-content, 
+  .founder-image {
+    min-width: 100%;
+  }
+  
+  .timeline::after {
+    left: 31px;
+  }
+  
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+  
+  .timeline-item:nth-child(even) {
+    left: 0;
+  }
+  
+  .enhanced-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  
+  .gallery-image {
+    height: 220px;
+  }
+  
+  .team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .member-image {
+    height: 240px;
+  }
+}
+
+@media (max-width: 576px) {
+  .enhanced-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery-image {
+    height: 250px;
+  }
+  
+  .gallery-filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .member-image {
+    height: 300px;
+  }
+  
+  .timeline-content {
+    padding: 15px;
   }
 }
