@@ -561,27 +561,34 @@ function filterGalleryItems(filter) {
     });
 }
 
-// Função para redirecionar para o WhatsApp (versão simplificada)
+// Função atualizada para redirecionar para o WhatsApp incluindo data de nascimento
 function redirectToWhatsApp(e) {
     e.preventDefault();
 
     // Obter os valores dos campos
     const name = document.getElementById('name').value.trim();
+    const birthdate = document.getElementById('birthdate').value;
     const phone = document.getElementById('phone').value.trim();
 
     // Validação básica
-    if (!name || !phone) {
-        alert('Por favor, preencha seu nome e telefone para agendar.');
+    if (!name || !birthdate || !phone) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
         return;
     }
+
+    // Formatar a data de nascimento para exibição brasileira (DD/MM/AAAA)
+    const birthdateParts = birthdate.split('-');
+    const formattedBirthdate = birthdateParts.length === 3 ?
+        `${birthdateParts[2]}/${birthdateParts[1]}/${birthdateParts[0]}` : birthdate;
 
     // Construir a mensagem para o WhatsApp
     let message = `Olá! Gostaria de agendar um horário na Terto Barbearia.\n\n`;
     message += `*Nome:* ${name}\n`;
+    message += `*Data de Nascimento:* ${formattedBirthdate}\n`;
     message += `*Telefone:* ${phone}\n`;
     message += `\nPor favor, gostaria de informações sobre disponibilidade e valores dos serviços.`;
 
-    // Número da barbearia - atualize com o número correto
+    // Número da barbearia
     const whatsappNumber = '5582996009360'; // Inclui o código do país (55) para o Brasil
 
     // Codificar a mensagem para URL
