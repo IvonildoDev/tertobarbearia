@@ -436,7 +436,30 @@ function sendMessage() {
             botMessageDiv.textContent = 'Estamos localizados na Rua Lorival Messias 130 Pilar-AL.';
         } else if (userMessage.toLowerCase().includes('fundador') || userMessage.toLowerCase().includes('dono')) {
             botMessageDiv.textContent = 'Nossa barbearia foi fundada por Jonatas Terto em 2019. Jonatas tem mais de 5 anos de experiência como barbeiro e é apaixonado por proporcionar o melhor atendimento aos clientes.';
-        } else {
+        }
+        // Adição de novas respostas sobre corte infantil, encaixe e selagem
+        else if (userMessage.toLowerCase().includes('corte infantil') ||
+            (userMessage.toLowerCase().includes('infantil') &&
+                (userMessage.toLowerCase().includes('preço') || userMessage.toLowerCase().includes('valor') || userMessage.toLowerCase().includes('quanto')))) {
+            botMessageDiv.textContent = 'O corte infantil custa R$ 25,00.';
+        }
+        else if (userMessage.toLowerCase().includes('idade') ||
+            (userMessage.toLowerCase().includes('criança') || userMessage.toLowerCase().includes('crianças')) &&
+            userMessage.toLowerCase().includes('corte')) {
+            botMessageDiv.textContent = 'Não temos uma idade definida, mas aconselhamos que os pais tragam as crianças durante a semana, pois o ambiente é mais tranquilo para elas.';
+        }
+        else if (userMessage.toLowerCase().includes('encaixe')) {
+            botMessageDiv.textContent = 'O encaixe acontece quando há uma falta ou desistência de um cliente. Nesse caso, entramos em contato para avisar sobre a vaga disponível.';
+        }
+        else if (userMessage.toLowerCase().includes('selagem')) {
+            botMessageDiv.textContent = 'Sim, fazemos selagem, mas realizamos esse procedimento apenas durante a semana. Nos finais de semana, não realizamos selagem.';
+        }
+        // Adição de nova resposta sobre combos
+        else if (userMessage.toLowerCase().includes('combo') || userMessage.toLowerCase().includes('pacote') ||
+            (userMessage.toLowerCase().includes('mensal') && userMessage.toLowerCase().includes('pagamento'))) {
+            botMessageDiv.textContent = 'O pagamento dos combos é feito mensalmente e, dentro desse período, você pode utilizar o serviço quantas vezes quiser.';
+        }
+        else {
             botMessageDiv.textContent = 'Obrigado por entrar em contato! Como posso ajudar com nossos serviços de barbearia?';
         }
 
