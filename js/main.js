@@ -701,3 +701,99 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// --- Modal de Inscrição (Terto Academy) ---
+document.addEventListener('DOMContentLoaded', function () {
+    const openEnrollBtn = document.getElementById('open-enroll');
+    const enrollModal = document.getElementById('enroll-modal');
+    const closeEnrollBtn = document.getElementById('close-enroll');
+    const enrollForm = document.getElementById('enroll-form');
+    const enrollPhone = document.getElementById('enroll-phone');
+
+    function openEnrollModal() {
+        if (!enrollModal) return;
+        enrollModal.setAttribute('aria-hidden', 'false');
+        enrollModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        const firstInput = document.getElementById('enroll-name');
+        if (firstInput) firstInput.focus();
+    }
+
+    function closeEnrollModal() {
+        if (!enrollModal) return;
+        enrollModal.setAttribute('aria-hidden', 'true');
+        enrollModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    if (openEnrollBtn) {
+        openEnrollBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            openEnrollModal();
+        });
+    }
+
+    if (closeEnrollBtn) {
+        closeEnrollBtn.addEventListener('click', function () {
+            closeEnrollModal();
+        });
+    }
+
+    // Fechar modal ao clicar fora do conteúdo
+    if (enrollModal) {
+        enrollModal.addEventListener('click', function (e) {
+            if (e.target === enrollModal) closeEnrollModal();
+        });
+    }
+
+    // Fechar com ESC
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && enrollModal && enrollModal.classList.contains('active')) {
+            closeEnrollModal();
+        }
+    });
+
+    // Máscara simples para o campo de telefone do modal
+    if (enrollPhone) {
+        enrollPhone.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            if (value.length > 0) {
+                value = `(${value.slice(0, 2)})${value.length > 2 ? ' ' + value.slice(2, 7) : ''}${value.length > 7 ? '-' + value.slice(7, 11) : ''}`;
+            }
+            e.target.value = value;
+        });
+    }
+
+    // Submissão do formulário: enviar mensagem para o WhatsApp
+    if (enrollForm) {
+        enrollForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('enroll-name').value.trim();
+            const phone = document.getElementById('enroll-phone').value.trim();
+            const city = document.getElementById('enroll-city').value.trim();
+
+            if (!name || !phone || !city) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            // Construir mensagem
+            let message = `Olá! Tenho interesse no curso Terto Academy.%0A%0A`;
+            message += `*Nome:* ${name}%0A`;
+            message += `*Telefone:* ${phone}%0A`;
+            message += `*Cidade:* ${city}%0A`;
+            message += `%0APor favor, me passe mais informações sobre a próxima turma.`;
+
+            const whatsappNumber = '5582996009360';
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+            // Abrir no WhatsApp (nova aba)
+            window.open(whatsappLink, '_blank');
+
+            // Fechar modal
+            closeEnrollModal();
+        });
+    }
+});

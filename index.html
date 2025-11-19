@@ -31,6 +31,7 @@
             <a href="sobre.html">Nossa História</a>
             <a href="#servicos">Serviços</a>
             <a href="#agendamento">Agendamento</a>
+            <a href="#academy">Academy</a>
             <a href="#galeria">Galeria</a>
             <a href="#contato">Contato</a>
         </div>
@@ -48,6 +49,7 @@
             <a href="sobre.html">Nossa História</a>
             <a href="#servicos">Serviços</a>
             <a href="#agendamento">Agendamento</a>
+            <a href="#academy">Academy</a>
             <a href="#galeria">Galeria</a>
             <a href="#contato">Contato</a>
         </nav>
@@ -133,6 +135,67 @@
                     <!-- <span class="price">R$ 150,00</span> -->
                 </div>
 
+            </div>
+        </section>
+
+        <!-- Seção Terto Academy -->
+        <section id="academy" class="academy-section">
+            <h2 class="section-title">Terto Academy — Curso de Barbeiro</h2>
+            <div class="academy-container">
+                <div class="academy-info">
+                    <h3>Curso Profissional de Barbeiro</h3>
+                    <p>Aprenda técnicas modernas de corte, acabamento, barba, design de sobrancelhas e atendimento
+                        profissional. A Terto Academy oferece aulas práticas e teóricas.</p>
+
+                    <ul class="course-details">
+                        <li><strong>Duração:</strong> 2 meses (Terça-feira e Quinta)</li>
+                        <li><strong>Carga horária:</strong> 36 horas </li>
+                        <li><strong>Turmas:</strong> Noite </li>
+                        <li><strong>Inclui:</strong> Apostila Certificado e Sorteios Apos a Conclusão do Curso
+                        </li>
+                        <li><strong>Investimento:</strong> Consulte disponibilidade — parcelamento disponível</li>
+                    </ul>
+
+                    <div class="academy-cta">
+                        <a href="#" id="open-enroll" class="cta-button">Inscreva-se</a>
+                    </div>
+                </div>
+
+                <div class="academy-gallery">
+                    <div class="academy-item"><img src="img/aluno.PNG" alt="Aula prática - Terto Academy"
+                            onclick="openLightbox(this)"></div>
+                    <div class="academy-item"><img src="img/aluno.PNG" alt="Alunos praticando cortes"
+                            onclick="openLightbox(this)"></div>
+                    <div class="academy-item"><img src="img/aluno.PNG" alt="Instrutor demonstrando técnica"
+                            onclick="openLightbox(this)"></div>
+                    <div class="academy-item"><img src="img/aluno.PNG" alt="Formatura - Terto Academy"
+                            onclick="openLightbox(this)"></div>
+                </div>
+            </div>
+
+            <!-- Modal de Inscrição (abre ao clicar em Inscreva-se) -->
+            <div id="enroll-modal" class="modal enroll-modal" aria-hidden="true">
+                <div class="modal-content">
+                    <button class="modal-close" id="close-enroll" aria-label="Fechar">&times;</button>
+                    <h3>Inscreva-se na Terto Academy</h3>
+                    <form id="enroll-form">
+                        <div class="form-group">
+                            <label for="enroll-name">Nome completo*</label>
+                            <input type="text" id="enroll-name" name="name" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="enroll-phone">Telefone*</label>
+                            <input type="tel" id="enroll-phone" name="phone" required placeholder="(00) 00000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="enroll-city">Cidade*</label>
+                            <input type="text" id="enroll-city" name="city" required placeholder="Sua cidade">
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit" class="btn primary-btn">Enviar via WhatsApp</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
 
@@ -358,6 +421,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#agendamento">Agendamento</a></li>
+                    <li><a href="#academy">Academy</a></li>
                     <li><a href="#galeria">Galeria</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
