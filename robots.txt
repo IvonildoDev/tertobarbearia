@@ -1,0 +1,29 @@
+# robots.txt para Terto Barbearia
+# Arquivo de controle para rastreadores de buscadores
+
+# Permitir acesso do Google
+User-agent: Googlebot
+Allow: /
+
+# Permitir acesso do Bing
+User-agent: Bingbot
+Allow: /
+
+# Permitir acesso de todos os buscadores
+User-agent: *
+Allow: /
+
+# Bloquear acesso a arquivos e pastas específicas
+Disallow: /js/
+Disallow: /css/
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Permitir acesso às imagens
+Allow: /img/
+
+# Localização do Sitemap
+Sitemap: https://www.tertobarbearia.com.br/sitemap.xml
+
+# Tempo de espera entre rastreamentos (em segundos)
+Crawl-delay: 1

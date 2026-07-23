@@ -4,7 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Terto Barbearia</title>
+
+    <!-- SEO Meta Tags -->
+    <title>Bem-vindo A Terto Barbearia
+        Seu estilo, nossa arte. </title>
+    <meta name="description"
+        content="A Terto Barbearia oferece cortes modernos, barba profissional, tratamentos capilares e curso de barbeiro. Agende seu horário! Localização, serviços e preços acessíveis.">
+    <meta name="keywords"
+        content="barbearia, corte de cabelo masculino, barba, degradê, barbearia profissional, curso de barbeiro, terto academy, agendamento barbearia, corte social, hidratação capilar">
+    <meta name="author" content="Terto Barbearia">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Portuguese">
+    <meta name="revisit-after" content="7 days">
+    <link rel="canonical" href="https://www.tertobarbearia.com.br/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="Terto Barbearia - Seu Estilo, Nossa Arte">
+    <meta property="og:description"
+        content="Cortes modernos, barba profissional e curso de barbeiro. A melhor barbearia da região. Agende seu horário!">
+    <meta property="og:image" content="https://www.tertobarbearia.com.br/img/logo.png">
+    <meta property="og:url" content="https://www.tertobarbearia.com.br/">
+    <meta property="og:site_name" content="Terto Barbearia">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Terto Barbearia - Cortes Modernos e Profissionais">
+    <meta name="twitter:description" content="A melhor barbearia da região. Cortes, barba, academy e muito mais!">
+    <meta name="twitter:image" content="https://www.tertobarbearia.com.br/img/logo.png">
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="BR">
+    <meta name="geo.placename" content="Brasil">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +58,7 @@
         <div class="sidebar-header">
             <div class="sidebar-logo">
                 <a href="index.html">
-                    <img src="img/logo-white.png" alt="Terto Barbearia Logo" class="sidebar-logo-image">
+                    <img src="img/logo.png" alt="Terto Barbearia Logo" class="sidebar-logo-image">
                 </a>
             </div>
             <button class="close-btn" onclick="toggleSidebar()">×</button>
@@ -59,14 +96,15 @@
     <main class="main-content">
         <section id="home" class="hero-section">
             <div class="hero-content">
-                <h1>Bem-vindo A Terto Barbearia</h1>
-                <p class="tagline">Seu estilo, nossa arte.</p>
-                <a href="#agendamento" class="cta-button">Agendar Horário</a>
+                <h1>Terto Barbearia - Cortes Modernos e Barba Profissional</h1>
+                <p class="tagline">Seu estilo, nossa arte. A melhor barbearia da região.</p>
+                <a href="#agendamento" class="cta-button" aria-label="Agendar horário na Terto Barbearia">Agendar
+                    Horário</a>
             </div>
         </section>
 
         <section id="servicos" class="services-section">
-            <h2 class="section-title">Nossos Serviços</h2>
+            <h2 class="section-title">Serviços de Barbearia - Cortes, Barba e Tratamentos</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">✂️</div>
@@ -140,7 +178,7 @@
 
         <!-- Seção Terto Academy -->
         <section id="academy" class="academy-section">
-            <h2 class="section-title">Terto Academy — Curso de Barbeiro</h2>
+            <h2 class="section-title">Terto Academy - Curso Profissionalizante de Barbeiro</h2>
             <div class="academy-container">
                 <div class="academy-info">
                     <h3>Curso Profissional de Barbeiro</h3>
@@ -283,7 +321,7 @@
                     <p>Somos apaixonados por oferecer o melhor serviço e experiência para nossos clientes.</p>
                     <div class="quote-mark end-quote">❞</div>
                     <div class="testimonial-author">
-                        <img src="img/founder.jpg" alt="Jonatas Terto" class="author-image">
+                        <img src="img/fundador.jpg" alt="Jonatas Terto" class="author-image">
                         <cite>— Jonatas Terto, Fundador</cite>
                     </div>
                 </div>
@@ -507,6 +545,108 @@
             <p>Desenvolvido Por: <a href="#" target="_blank">Ivonildo Lima</a></p>
         </div>
     </footer>
+
+    <!-- Schema.org - Dados Estruturados para Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HairSalon",
+        "name": "Terto Barbearia",
+        "image": "https://www.tertobarbearia.com.br/img/logo.png",
+        "@id": "https://www.tertobarbearia.com.br",
+        "url": "https://www.tertobarbearia.com.br",
+        "telephone": "+55-00-00000-0000",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Endereço da Barbearia",
+            "addressLocality": "Sua Cidade",
+            "addressRegion": "Estado",
+            "postalCode": "00000-000",
+            "addressCountry": "BR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 0.0,
+            "longitude": 0.0
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "19:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "09:00",
+                "closes": "17:00"
+            }
+        ],
+        "sameAs": [
+            "https://www.facebook.com/tertobarbearia",
+            "https://www.instagram.com/tertobarbearia"
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Serviços de Barbearia",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Corte Social",
+                        "description": "Corte de cabelo profissional masculino"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Corte Degradê",
+                        "description": "Corte moderno com degradê profissional"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Barba Profissional",
+                        "description": "Barba completa com acabamento profissional"
+                    }
+                }
+            ]
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "150"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Terto Academy - Curso de Barbeiro",
+        "description": "Curso profissional de barbeiro com aulas práticas e teóricas",
+        "url": "https://www.tertobarbearia.com.br/#academy",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sua Cidade",
+            "addressRegion": "Estado",
+            "addressCountry": "BR"
+        },
+        "offers": {
+            "@type": "Offer",
+            "category": "Curso Profissionalizante",
+            "name": "Curso de Barbeiro Profissional",
+            "description": "Duração: 2 meses | Carga horária: 36 horas | Certificado incluso"
+        }
+    }
+    </script>
 
     <script src="js/main.js"></script>
 </body>
