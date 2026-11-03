@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar o carrossel
     initCarousel();
 
+    // Inicializar a hero em carrossel
+    initHeroCarousel();
+
     // Adicionar classe ao header quando rolar a página
     window.addEventListener('scroll', function () {
         const header = document.querySelector('.main-header');
@@ -90,6 +93,80 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar lightbox melhorado
     initLightbox();
 });
+
+// Hero em carrossel (Marca / Equipe / Salão)
+function initHeroCarousel() {
+    const root = document.querySelector('.hero-carousel');
+    if (!root) return;
+
+    const slides = Array.from(root.querySelectorAll('.hero-slide'));
+    const dots = Array.from(root.querySelectorAll('.hs-dot'));
+    if (slides.length < 2) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) root.classList.add('no-autoplay');
+
+    let current = 0;
+
+    function goTo(n) {
+        const next = (n + slides.length) % slides.length;
+        if (next === current) return;
+
+        slides[current].classList.remove('is-active');
+        slides[current].setAttribute('aria-hidden', 'true');
+        slides[current].setAttribute('inert', '');
+        dots[current].classList.remove('is-active');
+        dots[current].setAttribute('aria-selected', 'false');
+
+        current = next;
+
+        slides[current].classList.add('is-active');
+        slides[current].removeAttribute('aria-hidden');
+        slides[current].removeAttribute('inert');
+        dots[current].classList.add('is-active');
+        dots[current].setAttribute('aria-selected', 'true');
+    }
+
+    // O avanço automático acontece quando a barra de progresso termina
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => goTo(i));
+        dot.querySelector('span').addEventListener('animationend', () => {
+            if (dot.classList.contains('is-active')) goTo(current + 1);
+        });
+    });
+
+    root.querySelector('.hs-arrow--prev').addEventListener('click', () => goTo(current - 1));
+    root.querySelector('.hs-arrow--next').addEventListener('click', () => goTo(current + 1));
+
+    // Pausar ao passar o mouse, ao focar um controle ou quando a aba fica oculta
+    const pause = () => root.classList.add('is-paused');
+    const resume = () => {
+        if (!root.matches(':hover') && !root.contains(document.activeElement)) {
+            root.classList.remove('is-paused');
+        }
+    };
+    root.addEventListener('mouseenter', pause);
+    root.addEventListener('mouseleave', resume);
+    root.addEventListener('focusin', pause);
+    root.addEventListener('focusout', () => setTimeout(resume, 0));
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) pause(); else resume();
+    });
+
+    // Teclado: setas esquerda/direita quando o foco está no carrossel
+    root.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goTo(current - 1);
+        if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    // Swipe no celular
+    let startX = 0;
+    root.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener('touchend', (e) => {
+        const dist = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dist) >= 50) goTo(dist > 0 ? current - 1 : current + 1);
+    }, { passive: true });
+}
 
 // Controle do Sidebar - Versão melhorada
 function toggleSidebar() {

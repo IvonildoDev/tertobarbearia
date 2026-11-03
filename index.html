@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -94,13 +94,71 @@
 
     <!-- Conteúdo Principal -->
     <main class="main-content">
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <h1>Terto Barbearia - Cortes Modernos e Barba Profissional</h1>
-                <p class="tagline">Seu estilo, nossa arte. A melhor barbearia da região.</p>
-                <a href="#agendamento" class="cta-button" aria-label="Agendar horário na Terto Barbearia">Agendar
-                    Horário</a>
+        <section id="home" class="hero-section hero-carousel" aria-roledescription="carousel" aria-label="Destaques da Terto Barbearia">
+            <div class="hero-slides">
+                <!-- Slide 1: Marca -->
+                <article class="hero-slide hero-slide--brand is-active" role="group" aria-roledescription="slide" aria-label="1 de 3">
+                    <div class="hs-logo" role="img" aria-label="Logo Terto Barbearia"></div>
+                    <div class="hs-center">
+                        <h1 class="hs-title hs-reveal" style="--d:.1s">Terto Barbearia - Cortes Modernos e Barba Profissional</h1>
+                        <p class="hs-sub hs-reveal" style="--d:.25s">Seu estilo, nossa arte. A melhor barbearia da região.</p>
+                        <div class="hs-actions hs-reveal" style="--d:.4s">
+                            <a href="#agendamento" class="hs-btn hs-btn--fill">Agendar Horário</a>
+                            <a href="#academy" class="hs-btn hs-btn--ghost">Conhecer a Academy</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Slide 2: Equipe -->
+                <article class="hero-slide hero-slide--team" role="group" aria-roledescription="slide" aria-label="2 de 3" aria-hidden="true" inert>
+                    <div class="hs-text">
+                        <span class="hs-eyebrow hs-reveal" style="--d:.05s">Barbearia · Academy</span>
+                        <h2 class="hs-title hs-reveal" style="--d:.15s">Seu estilo,<br>nossa <em>arte.</em></h2>
+                        <p class="hs-sub hs-reveal" style="--d:.3s">Corte, barba e cuidados especiais com quem faz da barbearia um ofício.</p>
+                        <div class="hs-actions hs-reveal" style="--d:.45s">
+                            <a href="#agendamento" class="hs-btn hs-btn--fill">Agendar Horário</a>
+                            <a href="#servicos" class="hs-btn hs-btn--ghost">Ver serviços</a>
+                        </div>
+                    </div>
+                    <div class="hs-photo hs-reveal" style="--d:.2s">
+                        <img src="img/equipe.jpg" alt="Equipe da Terto Barbearia" width="1170" height="1164" loading="lazy">
+                    </div>
+                    <a href="sobre.html" class="hs-badge hs-reveal" style="--d:.7s">
+                        <strong>Conheça a equipe</strong>
+                        Quem cuida do seu visual
+                        <span class="hs-badge-stripe"></span>
+                    </a>
+                </article>
+
+                <!-- Slide 3: Salão -->
+                <article class="hero-slide hero-slide--salon" role="group" aria-roledescription="slide" aria-label="3 de 3" aria-hidden="true" inert>
+                    <div class="hs-salon-photo" role="img" aria-label="Salão da Terto Barbearia"></div>
+                    <div class="hs-text">
+                        <span class="hs-eyebrow hs-reveal" style="--d:.05s">Seu estilo, nossa arte</span>
+                        <h2 class="hs-title hs-reveal" style="--d:.15s">Corte com<span>atitude</span></h2>
+                        <p class="hs-sub hs-reveal" style="--d:.3s">Ambiente pensado para você relaxar enquanto cuidamos do seu visual.</p>
+                        <div class="hs-actions hs-reveal" style="--d:.45s">
+                            <a href="#agendamento" class="hs-btn hs-btn--fill">Agendar Horário</a>
+                            <a href="#galeria" class="hs-btn hs-btn--ghost">Conhecer o salão</a>
+                        </div>
+                    </div>
+                    <ul class="hs-chips hs-reveal" style="--d:.6s">
+                        <li>✂ Corte Social</li>
+                        <li>✂ Corte Degradê</li>
+                        <li>✂ Sobrancelha</li>
+                        <li>✂ Selagem</li>
+                    </ul>
+                </article>
             </div>
+
+            <button type="button" class="hs-arrow hs-arrow--prev" aria-label="Slide anterior">‹</button>
+            <button type="button" class="hs-arrow hs-arrow--next" aria-label="Próximo slide">›</button>
+            <div class="hs-dots" role="tablist" aria-label="Escolher slide">
+                <button type="button" class="hs-dot is-active" role="tab" aria-selected="true" aria-label="Slide 1: Marca"><span></span></button>
+                <button type="button" class="hs-dot" role="tab" aria-selected="false" aria-label="Slide 2: Equipe"><span></span></button>
+                <button type="button" class="hs-dot" role="tab" aria-selected="false" aria-label="Slide 3: Salão"><span></span></button>
+            </div>
+            <div class="hs-stripe" aria-hidden="true"></div>
         </section>
 
         <section id="servicos" class="services-section">
